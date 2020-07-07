@@ -7,12 +7,12 @@ import {
     Text,
     StatusBar,
     TouchableOpacity,
-    FlatList,
     Image
 } from 'react-native';
 import Header from '../../components/Header';
 import Item from '../../components/Item';
 import ShowAll from '../../components/ShowAll'
+import { FlatList } from 'react-native-gesture-handler';
 
 class App extends React.Component {
     constructor(props) {
@@ -24,7 +24,7 @@ class App extends React.Component {
     render() {
         console.log(this.props.props)
         return (
-            <>
+            <View >
                 <StatusBar barStyle="dark-content" />
                 <Header
                     title={' Home'}
@@ -39,12 +39,17 @@ class App extends React.Component {
                         source={require('../../assets/img/header.png')}></Image>
                     <ShowAll title={'New Offers'}></ShowAll>
                     <FlatList
-                        style={{ backgroundColor: 'white', width: '100%', }}
+                        style={{ backgroundColor: 'white' }}
                         data={this.state.data}
                         numColumns={2}
                         keyExtractor={({ id }, index) => id}
                         renderItem={({ item }) =>
-                            <Item discount={'17%'}></Item>
+                            <TouchableOpacity
+                                style={{ flex: .5 }}
+                                onPress={() => this.props.props.navigation.navigate("ProductDetails")}
+                            >
+                                <Item discount={'17%'}></Item>
+                            </TouchableOpacity>
                         }>
                     </FlatList>
                     <ShowAll title={'New Offers'}></ShowAll>
@@ -54,13 +59,18 @@ class App extends React.Component {
                         numColumns={2}
                         keyExtractor={({ id }, index) => id}
                         renderItem={({ item }) =>
-                            <Item discount={'17%'}></Item>
+                        <TouchableOpacity
+                        style={{ flex: .5 }}
+                        onPress={() => this.props.props.navigation.navigate("ProductDetails")}
+                    >
+                        <Item discount={'17%'}></Item>
+                    </TouchableOpacity>
                         }>
                     </FlatList>
                 </ScrollView>
 
 
-            </>
+            </View>
         );
     };
 }

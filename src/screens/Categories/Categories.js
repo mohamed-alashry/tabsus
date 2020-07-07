@@ -25,31 +25,44 @@ class App extends React.Component {
     render() {
         const { page } = this.state;
         return (
-            <>
+            <View >
                 <Header
                     title={' Home'}
                     showMenu={true}
                     props={this.props}></Header>
-                <View style={{ flexDirection: 'row', justifyContent: 'space-evenly', height: 50, alignItems: 'center', backgroundColor: '#F4F5F8' }}>
+
+                <ScrollView horizontal showsHorizontalScrollIndicator={false} >
                     <TouchableOpacity
                         onPress={() => this.setState({ page: 'Clothing' })}
-                        style={{ backgroundColor: page == 'Clothing' ? '#DBDCDE' : 'transparent', height: '100%', justifyContent: 'center' }}>
+                        style={{ backgroundColor: page == 'Clothing' ? '#DBDCDE' : 'transparent', }}>
                         <Text >Clothing and Apperal</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={{ backgroundColor: page == 'Home' ? '#DBDCDE' : 'transparent', height: '100%', justifyContent: 'center' }}
+                    <TouchableOpacity style={{ backgroundColor: page == 'Home' ? '#DBDCDE' : 'transparent', }}
                         onPress={() => this.setState({ page: 'Home' })}>
                         <Text>Home , Garden</Text>
                     </TouchableOpacity>
                     <TouchableOpacity
                         onPress={() => this.setState({ page: 'Organic' })}
-                        style={{ backgroundColor: page == 'Organic' ? '#DBDCDE' : 'transparent', height: '100%', justifyContent: 'center' }}>
+                        style={{ backgroundColor: page == 'Organic' ? '#DBDCDE' : 'transparent', }}>
                         <Text>Organic</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={{ backgroundColor: page == 'Consumer' ? '#DBDCDE' : 'transparent', height: '100%', justifyContent: 'center' }}
+                    <TouchableOpacity
+                        style={{ backgroundColor: page == 'Consumer' ? '#DBDCDE' : 'transparent', }}
                         onPress={() => this.setState({ page: 'Consumer' })}>
                         <Text>Consumer Electric</Text>
                     </TouchableOpacity>
-                </View>
+                    <TouchableOpacity
+                        onPress={() => this.setState({ page: 'Clothing' })}
+                        style={{ backgroundColor: page == 'Clothing' ? '#DBDCDE' : 'transparent', }}>
+                        <Text >Clothing and Apperal</Text>
+                    </TouchableOpacity>
+               
+                    <TouchableOpacity
+                        style={{ backgroundColor: page == 'Consumer' ? '#DBDCDE' : 'transparent', }}
+                        onPress={() => this.setState({ page: 'Consumer' })}>
+                        <Text>Consumer Electric</Text>
+                    </TouchableOpacity>
+                </ScrollView>
                 {page == 'Clothing' &&
                     <View>
                         <ShowAll title={'electronics'}></ShowAll>
@@ -90,7 +103,7 @@ class App extends React.Component {
                         </FlatList>
                     </View>
                 }
-            </>
+            </View>
         );
     };
 }

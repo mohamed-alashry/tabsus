@@ -6,11 +6,11 @@ import {
     View,
     Text,
     StatusBar,
-    FlatList
-} from 'react-native';
-import Header from '../../components/Header';
-import Item from '../../components/Item';
-
+    FlatList,
+    TouchableOpacity
+} from 'react-native'
+import Header from '../../components/Header'
+import Item from '../../components/Item'
 class App extends React.Component {
     constructor(props) {
         super(props);
@@ -26,12 +26,14 @@ class App extends React.Component {
                     showMenu={true}
                     props={this.props}></Header>
                 <FlatList
-                    style={{ backgroundColor: 'white', width: '100%', marginVertical:10}}
+                    style={{ backgroundColor: 'white', width: '100%', marginVertical: 10 }}
                     data={this.state.data}
                     numColumns={2}
                     keyExtractor={({ id }, index) => id}
                     renderItem={({ item }) =>
-                        <Item  ></Item>
+                        <TouchableOpacity style={{ flex: .5 }}>
+                            <Item></Item>
+                        </TouchableOpacity>
                     }>
                 </FlatList>
             </>

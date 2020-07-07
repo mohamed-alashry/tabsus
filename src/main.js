@@ -9,13 +9,16 @@ import {
     StatusBar,
 } from 'react-native';
 import Tabs from 'react-native-tabs';
-import Home from './screens/Home/Home'
-import Account from './screens/Account/Account'
-import Whishlist from './screens/Whishlist/Whishlist'
-import Categories from './screens/Categories/Categories'
+import Home from './screens/Home/Home';
+import Account from './screens/Account/Account';
+import Whishlist from './screens/Whishlist/Whishlist';
+import Categories from './screens/Categories/Categories';
+
+
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+
 import colors from './assets/colors';
 // import SplashScreen from 'react-native-splash-screen';
 
@@ -36,7 +39,7 @@ class Main extends React.Component {
                     backgroundColor: 'white',
                 }}>
                 <View style={{ flex: 1 }}>
-                    {page == 'Home' && (<Home props={this.props}  />)}
+                    {page == 'Home' && (<Home props={this.props} />)}
                     {page == 'Account' && (<Account props={this.props} />)}
                     {page == 'Whishlist' && <Whishlist props={this.props} />}
                     {page == 'Categories' && <Categories props={this.props} />}

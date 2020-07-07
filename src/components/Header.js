@@ -9,27 +9,33 @@ import {
 } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Fontisto from 'react-native-vector-icons/Fontisto';
-import { NavigationContainer, DrawerActions } from '@react-navigation/native';
+import { DrawerActions } from '@react-navigation/native';
 
 
 import colors from '../assets/colors'
 import { StackActions } from '@react-navigation/native';
 
 class Header extends React.Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+
+        }
+    }
     render() {
-        const { title, showBack, showMenu, showExit } = this.props
+        const { title, showBack, showMenu, showExit, hideSearch, transparent } = this.props
+        const color = this.props.transparent ? "black" : "white"
         return (
-            <View style={{ justifyContent: 'space-between', alignItems: 'center', height: 70, flexDirection: 'row', backgroundColor: this.props.transparent ? 'transparent' : 'black' }}>
+            <View style={{ justifyContent: 'space-between', alignItems: 'center', height: 70, flexDirection: 'row', backgroundColor: transparent ? '#F4F5F8' : 'black' }}>
                 <View style={{ flexDirection: 'row', alignItems: 'center' }}>
                     {
                         showBack &&
-
                         <TouchableOpacity
-                            //  onPress={() => this.props.props.navigation.dispatch(StackActions.pop(1))}
+                            onPress={() => this.props.props.navigation.dispatch(StackActions.pop(1))}
                             style={{ marginHorizontal: 10 }}>
                             <Ionicons
                                 name='chevron-back'
-                                color="white"
+                                color= {color}
                                 size={20}
                             />
                         </TouchableOpacity>
@@ -38,11 +44,11 @@ class Header extends React.Component {
                     {
                         showMenu &&
                         <TouchableOpacity
-                        onPress={() => this.props.props.props.navigation.dispatch(DrawerActions.openDrawer())}
+                            onPress={() => this.props.props.props.navigation.dispatch(DrawerActions.openDrawer())}
                             style={{ marginHorizontal: 10 }}>
                             <Ionicons
                                 name='menu'
-                                color="white"
+                                color={color}
                                 size={20}
                             />
                         </TouchableOpacity>
@@ -54,12 +60,12 @@ class Header extends React.Component {
                             style={{ marginHorizontal: 10 }}>
                             <Ionicons
                                 name='close'
-                                color="white"
+                                color={color}
                                 size={25}
                             />
                         </TouchableOpacity>
                     }
-                    <Text style={{ fontSize: 20, color: 'white', fontWeight: 'bold' }}>{title}</Text>
+                    <Text style={{ fontSize: 20, color:color, fontWeight: 'bold' }}>{title}</Text>
                 </View>
                 <View style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
                     <TouchableOpacity
@@ -67,25 +73,25 @@ class Header extends React.Component {
                         style={{ marginHorizontal: 10 }}>
                         <Fontisto
                             name='bell'
-                            color="white"
+                            color={color}
                             size={25}
                         />
                     </TouchableOpacity>
-                    <TouchableOpacity
+                    {!hideSearch && <TouchableOpacity
                         //  onPress={() => this.props.props.navigation.dispatch(StackActions.pop(1))}
                         style={{ marginHorizontal: 5 }}>
                         <Fontisto
                             name='search'
-                            color="white"
+                            color={color}
                             size={25}
                         />
-                    </TouchableOpacity>
+                    </TouchableOpacity>}
                     <TouchableOpacity
                         //  onPress={() => this.props.props.navigation.dispatch(StackActions.pop(1))}
                         style={{ marginHorizontal: 10 }}>
                         <Ionicons
                             name='cart-outline'
-                            color="white"
+                            color={color}
                             size={30}
                         />
                     </TouchableOpacity>

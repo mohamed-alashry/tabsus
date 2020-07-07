@@ -14,7 +14,7 @@ class Item extends React.Component {
     render() {
         const { discount } = this.props;
         return (
-            <View style={{ backgroundColor: 'transparent', alignItems: 'center', flex: 1 }}>
+            <View style={{ backgroundColor: 'transparent', alignItems: 'center' }}>
                 <View style={{ backgroundColor: '#F4F5F8' }}>
                     <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginVertical: 7, marginHorizontal: 5 }}>
                         <TouchableOpacity
