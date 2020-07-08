@@ -5,33 +5,29 @@ import { TextInput, Text, View, TouchableOpacity, StyleSheet } from 'react-nativ
 import Header from '../../components/Header';
 import { RNToasty } from 'react-native-toasty';
 
-export default function UselessTextInput() {
+export default function Login() {
 
     const [Email, setEmail] = useState('');
     const [Password, setPasswored] = useState('');
-    const [usernameError, setUsernameError] = useState('');
+    const [emailError, setEmailError] = useState('');
     const [passwordError, setPasswordError] = useState('');
     const handleChange = () => {
-        usernameValidation()
-        passwordValidation()
-        if (usernameError == "" && passwordError==""){ 
+        Validation()
+        if (emailError == "" && passwordError == "" && Email && Password) {
             RNToasty.Show({ title: 'SUCESSSSS' })
         }
- 
     }
-    const usernameValidation = () => {
+    const Validation = () => {
         if (!Email) {
-            setUsernameError("Please Enter an email")
+            setEmailError("Please Enter an email")
         }
         else if (Email && !/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(Email)) {
-            setUsernameError("Enter A valid Email")
+            setEmailError("Enter A valid Email")
         }
         else {
-            setUsernameError("")
-          
+
+            setEmailError("")
         }
-    }
-    const passwordValidation = () => {
         if (!Password) {
             setPasswordError("Please Enter a password")
         }
@@ -41,6 +37,7 @@ export default function UselessTextInput() {
             setPasswordError("")
         }
     }
+
     return (
         <View >
             <Header
@@ -55,8 +52,8 @@ export default function UselessTextInput() {
                 onChangeText={text => setEmail(text)}
                 value={Email}
             />
-            {usernameError != "" && <Text style={{ marginHorizontal: 25, marginVertical: 10, color: 'red' }}>
-                {usernameError}
+            {emailError != "" && <Text style={{ marginHorizontal: 25, marginVertical: 10, color: 'red' }}>
+                {emailError}
             </Text>}
             <Text style={{ marginHorizontal: 25, marginVertical: 10 }}>Password</Text>
             <TextInput
