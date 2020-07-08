@@ -47,81 +47,100 @@ class App extends React.Component {
                     <TouchableOpacity
                         style={{ marginVertical: 10 }}
                         onPress={() => this.setState({ page: 'Product' })}>
-                        <Text style={{ borderRadius: 15, paddingHorizontal: 10, paddingVertical: 7, backgroundColor: page == "Product" ? "white" : "transparent" }}>sdsdsds</Text>
+                        <Text style={{ borderRadius: 15, paddingHorizontal: 10, paddingVertical: 7, backgroundColor: page == "Product" ? "white" : "transparent" }}>Product</Text>
                     </TouchableOpacity>
                     <TouchableOpacity
                         style={{ marginVertical: 10 }}
                         onPress={() => this.setState({ page: 'Details' })}>
-                        <Text style={{ borderRadius: 15, paddingHorizontal: 10, paddingVertical: 7, backgroundColor: page == "Details" ? "white" : "transparent" }}>sdsdsds</Text>
+                        <Text style={{ borderRadius: 15, paddingHorizontal: 10, paddingVertical: 7, backgroundColor: page == "Details" ? "white" : "transparent" }}>Details</Text>
                     </TouchableOpacity>
                     <TouchableOpacity
                         style={{ marginVertical: 10 }}
                         onPress={() => this.setState({ page: 'Reviews' })}>
-                        <Text style={{ borderRadius: 15, paddingHorizontal: 10, paddingVertical: 7, backgroundColor: page == "Reviews" ? "white" : "transparent" }}>sdsdsds</Text>
+                        <Text style={{ borderRadius: 15, paddingHorizontal: 10, paddingVertical: 7, backgroundColor: page == "Reviews" ? "white" : "transparent" }}>Reviews</Text>
                     </TouchableOpacity>
                 </View>
                 {
                     page == "Product" && <View>
-                        <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-                            <Text>s,dls,dls</Text>
-                            <Text>dsdsdsdsd</Text>
+                        <View style={{ flexDirection: 'row', justifyContent: 'space-between', paddingHorizontal: 10, paddingVertical: 5 }}>
+                            <Text>Priduct name</Text>
+                            <Text>SKU   </Text>
                         </View>
-                        <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+                        <View style={{ flexDirection: 'row', justifyContent: 'space-between', paddingHorizontal: 10, paddingVertical: 5 }}>
                             <StarRating
                                 disabled={true}
                                 maxStars={5}
                                 starStyle={{ color: '#EFA510' }}
-                                starSize={25}
-                                containerStyle={{ flex: .2, marginHorizontal: 12 }}
+                                starSize={15}
+                                containerStyle={{ flex: .2, }}
                                 rating={4}
                             // selectedStar={rating => this.onStarRatingPress(rating)}
                             />
                             <Text>dsdsdsdsd</Text>
                         </View>
-                        <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+                        <View style={{ flexDirection: 'row', justifyContent: 'space-between', paddingHorizontal: 10, paddingVertical: 5 }}>
                             <View style={{ flexDirection: 'row' }}>
-                                <Text>s,dls,dls</Text>
-                                <Text>dsdsdsdsd</Text>
+                                <Text>EG 20</Text>
+                                <Text style={{ marginHorizontal: 10, textDecorationLine: 'line-through' }}>EG 20</Text>
                             </View>
                             <View style={{ flexDirection: 'row', }}>
-                                <Text>s,dls,dls</Text>
-                                <Text>dsdsdsdsd</Text>
+
+                                <MaterialCommunityIcons
+
+                                    name='share-variant'
+                                    color={'gray'}
+                                    size={15}
+                                />
+                                <MaterialCommunityIcons
+                                    style={{ marginLeft: 10 }}
+                                    name='cards-heart'
+                                    color={'gray'}
+                                    size={15}
+                                />
+
+
+
                             </View>
                         </View>
                         <View style={{ backgroundColor: 'gray', height: .5, width: '100%' }}></View>
-                        <Text>Select Color</Text>
-                        <View style={{ flex: 1, flexDirection: 'row' }}>
+                        <Text style={{ paddingHorizontal: 10, paddingVertical: 5 }}>Select Color</Text>
+                        <View style={{ flex: 1, flexDirection: 'row', paddingHorizontal: 10, paddingVertical: 5, justifyContent: 'space-evenly' }}>
                             <TouchableOpacity style={{
                                 width: 44,
                                 height: 44,
                                 borderRadius: 44 / 2,
-                                backgroundColor: 'red'
+                                backgroundColor: '#CB35DC'
                             }}>
                             </TouchableOpacity>
                             <TouchableOpacity style={{
                                 width: 44,
                                 height: 44,
                                 borderRadius: 44 / 2,
-                                backgroundColor: 'red'
+                                backgroundColor: '#6A51ED'
                             }}></TouchableOpacity>
                             <TouchableOpacity style={{
                                 width: 44,
                                 height: 44,
                                 borderRadius: 44 / 2,
-                                backgroundColor: 'red'
+                                backgroundColor: '#ED5195'
                             }}></TouchableOpacity>
                             <TouchableOpacity style={{
                                 width: 44,
                                 height: 44,
                                 borderRadius: 44 / 2,
-                                backgroundColor: 'red'
+                                backgroundColor: '#ACB6C4'
                             }}></TouchableOpacity>
-
+                            <TouchableOpacity style={{
+                                width: 44,
+                                height: 44,
+                                borderRadius: 44 / 2,
+                                backgroundColor: '#000000'
+                            }}></TouchableOpacity>
                         </View>
                         <View style={{ backgroundColor: 'gray', height: .5, width: '100%' }}></View>
 
 
-                        <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+                        <View style={{ flexDirection: 'row', justifyContent: 'space-between', paddingHorizontal: 10, paddingVertical: 5  }}>
                             <Text>dsdsdsd</Text>
                             <Octicons
                                 name='chevron-right'
@@ -185,13 +204,13 @@ class App extends React.Component {
                             }>
                         </FlatList>
                         <View style={{ backgroundColor: 'gray', height: .5, width: '100%' }}></View>
-                        <View style={{flex:1 , flexDirection:'row'}}>
-                        <TouchableOpacity style={{flex:.2 ,backgroundColor:'red' , marginHorizontal:5 , borderRadius:15, alignItems:'center' }}>
-                            <Text style={{ }}>ADD</Text>
+                        <View style={{ flex: 1, flexDirection: 'row' }}>
+                            <TouchableOpacity style={{ flex: .2, backgroundColor: 'red', marginHorizontal: 5, borderRadius: 15, alignItems: 'center' }}>
+                                <Text style={{}}>ADD</Text>
 
                             </TouchableOpacity>
-                            <TouchableOpacity style={{flex:.8 ,backgroundColor:'red' , marginHorizontal:5 , borderRadius:15, alignItems:'center' }}>
-                            <Text style={{ }}>ADD To Cart</Text>
+                            <TouchableOpacity style={{ flex: .8, backgroundColor: 'red', marginHorizontal: 5, borderRadius: 15, alignItems: 'center' }}>
+                                <Text style={{}}>ADD To Cart</Text>
 
                             </TouchableOpacity>
                         </View>

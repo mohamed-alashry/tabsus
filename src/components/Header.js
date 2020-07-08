@@ -23,7 +23,7 @@ class Header extends React.Component {
         }
     }
     render() {
-        const { title, showBack, showMenu, showExit, hideSearch, transparent } = this.props
+        const { title, showBack, showMenu, showExit, hideSearch, transparent ,hideBell ,hideCart } = this.props
         const color = this.props.transparent ? "black" : "white"
         return (
             <View style={{ justifyContent: 'space-between', alignItems: 'center', height: 70, flexDirection: 'row', backgroundColor: transparent ? '#F4F5F8' : 'black' }}>
@@ -35,7 +35,7 @@ class Header extends React.Component {
                             style={{ marginHorizontal: 10 }}>
                             <Ionicons
                                 name='chevron-back'
-                                color= {color}
+                                color={color}
                                 size={20}
                             />
                         </TouchableOpacity>
@@ -65,9 +65,10 @@ class Header extends React.Component {
                             />
                         </TouchableOpacity>
                     }
-                    <Text style={{ fontSize: 20, color:color, fontWeight: 'bold' }}>{title}</Text>
+                    <Text style={{ fontSize: 20, color: color, fontWeight: 'bold' }}>{title}</Text>
                 </View>
                 <View style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
+                {!hideBell && 
                     <TouchableOpacity
                         //  onPress={() => this.props.props.navigation.dispatch(StackActions.pop(1))}
                         style={{ marginHorizontal: 10 }}>
@@ -76,7 +77,7 @@ class Header extends React.Component {
                             color={color}
                             size={25}
                         />
-                    </TouchableOpacity>
+                    </TouchableOpacity> }
                     {!hideSearch && <TouchableOpacity
                         //  onPress={() => this.props.props.navigation.dispatch(StackActions.pop(1))}
                         style={{ marginHorizontal: 5 }}>
@@ -86,15 +87,17 @@ class Header extends React.Component {
                             size={25}
                         />
                     </TouchableOpacity>}
-                    <TouchableOpacity
-                        //  onPress={() => this.props.props.navigation.dispatch(StackActions.pop(1))}
-                        style={{ marginHorizontal: 10 }}>
-                        <Ionicons
-                            name='cart-outline'
-                            color={color}
-                            size={30}
-                        />
-                    </TouchableOpacity>
+                    {!hideCart &&
+                        <TouchableOpacity
+                            //  onPress={() => this.props.props.navigation.dispatch(StackActions.pop(1))}
+                            style={{ marginHorizontal: 10 }}>
+                            <Ionicons
+                                name='cart-outline'
+                                color={color}
+                                size={30}
+                            />
+                        </TouchableOpacity>
+                    }
                 </View>
 
             </View >
