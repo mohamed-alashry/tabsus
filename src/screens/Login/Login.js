@@ -7,36 +7,56 @@ import { RNToasty } from 'react-native-toasty';
 
 export default function UselessTextInput() {
 
-    const [Username, setUsername] = useState('');
+    const [Email, setEmail] = useState('');
     const [Password, setPasswored] = useState('');
+    const [usernameError, setUsernameError] = useState('');
+    const [passwordError, setPasswordError] = useState('');
     const handleChange = () => {
-        if (Username) {
-            if (Password) {
-                return 0
-            }
-            else {
-                return 1
-            }
+        usernameValidation()
+        passwordValidation()
+        if (usernameError == "" && passwordError==""){ 
+            RNToasty.Show({ title: 'SUCESSSSS' })
+        }
+ 
+    }
+    const usernameValidation = () => {
+        if (!Email) {
+            setUsernameError("Please Enter an email")
+        }
+        else if (Email && !/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(Email)) {
+            setUsernameError("Enter A valid Email")
+        }
+        else {
+            setUsernameError("")
+          
+        }
+    }
+    const passwordValidation = () => {
+        if (!Password) {
+            setPasswordError("Please Enter a password")
+        }
+        else if (Password && !/^[A-Za-z]\w{7,14}$/.test(Password)) {
+            setPasswordError("Enter A valid Password")
         } else {
-            return 2
+            setPasswordError("")
         }
     }
     return (
-        <View style={{}} >
+        <View >
             <Header
                 hideSearch hideBell hideCart
                 title={' Home'}
                 showBack={true}
             ></Header>
-            <Text style={{ marginVertical: 15, marginHorizontal: 25 }}>Email Or Username</Text>
+            <Text style={{ marginVertical: 15, marginHorizontal: 25 }}>Email Or Email</Text>
             <Text style={{ marginHorizontal: 25, marginVertical: 10 }}>Email</Text>
             <TextInput
                 style={{ height: 40, borderColor: 'gray', borderWidth: 1, marginHorizontal: 25 }}
-                onChangeText={text => setUsername(text)}
-                value={Username}
+                onChangeText={text => setEmail(text)}
+                value={Email}
             />
-            {handleChange() === 2 && <Text style={{ marginHorizontal: 25, marginVertical: 10, color: 'red' }}>
-                Please Enter a vaild Username
+            {usernameError != "" && <Text style={{ marginHorizontal: 25, marginVertical: 10, color: 'red' }}>
+                {usernameError}
             </Text>}
             <Text style={{ marginHorizontal: 25, marginVertical: 10 }}>Password</Text>
             <TextInput
@@ -45,8 +65,8 @@ export default function UselessTextInput() {
                 onChangeText={text => setPasswored(text)}
                 value={Password}
             />
-            {handleChange() === 1 && <Text style={{ marginHorizontal: 25, marginVertical: 10, color: 'red' }}>
-                Please Enter a vaild Password
+            {passwordError != "" && <Text style={{ marginHorizontal: 25, marginVertical: 10, color: 'red' }}>
+                {passwordError}
             </Text>}
 
             <TouchableOpacity
@@ -59,9 +79,7 @@ export default function UselessTextInput() {
                     backgroundColor: 'red'
 
                 }}
-                onPress={() => handleChange() === 0 && RNToasty.Show({
-                    title: "SUCCESS"
-                })}
+                onPress={() => handleChange()}
             >
                 <Text>LOGIN</Text>
             </TouchableOpacity>
